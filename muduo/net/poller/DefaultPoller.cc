@@ -9,6 +9,7 @@
 #include "muduo/net/Poller.h"
 #include "muduo/net/poller/PollPoller.h"
 #include "muduo/net/poller/EPollPoller.h"
+#include "muduo/net/poller/IoUringPoller.h"
 
 #include <stdlib.h>
 
@@ -20,8 +21,12 @@ Poller* Poller::newDefaultPoller(EventLoop* loop)
   {
     return new PollPoller(loop);
   }
-  else
+  else if (::getenv("MUDUO_USE_EPOLL"))
   {
     return new EPollPoller(loop);
+  }
+  else
+  {
+    return new IoUringPoller(loop);
   }
 }

@@ -13,11 +13,14 @@ set(net_SRCS
   EventLoop.cc
   EventLoopThread.cc
   EventLoopThreadPool.cc
+  File.cc
+  File.h
   InetAddress.cc
   Poller.cc
   poller/DefaultPoller.cc
   poller/EPollPoller.cc
   poller/PollPoller.cc
+  poller/IoUringPoller.cc
   Socket.cc
   SocketsOps.cc
   TcpClient.cc
@@ -28,7 +31,7 @@ set(net_SRCS
   )
 
 add_library(muduo_net ${net_SRCS})
-target_link_libraries(muduo_net muduo_base)
+target_link_libraries(muduo_net muduo_base uring)
 
 #add_library(muduo_net_cpp11 ${net_SRCS})
 #target_link_libraries(muduo_net_cpp11 muduo_base_cpp11)
