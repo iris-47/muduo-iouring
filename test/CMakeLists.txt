@@ -10,12 +10,6 @@ find_library(LIB_MUDUO_NET libmuduo_net.a PATHS ~/Desktop/muduo-iouring/build/li
 
 link_directories(/home/pjj/CodeLib/gtest/googletest/build/lib/)
 
-add_executable(file file.cc)
-
-target_link_libraries (file ${LIB_MUDUO_NET})
-target_link_libraries (file ${LIB_MUDUO_BASE})
-target_link_libraries(file pthread rt uring)
-
 add_executable(IoUringPollerTest IoUringPollerTest.cc)
 
 

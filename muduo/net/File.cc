@@ -30,13 +30,13 @@ void File::write(const std::string& data)
 {
     buffer_ = data;
     channel_.setWriteCallback(std::bind(&File::handleWrite, this));
-    channel_.enableWriting();
+    channel_.enableWriting(); // channel新增监听fd的read事件
 }
 
 void File::read()
 {
     channel_.setReadCallback(std::bind(&File::handleRead, this));
-    channel_.enableReading();
+    channel_.enableReading(); // channel新增监听fd的write事件
 }
 
 void File::handleWrite()

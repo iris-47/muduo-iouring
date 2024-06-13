@@ -25,8 +25,8 @@ private:
     int fd_;
     muduo::net::EventLoop* loop_;
     muduo::net::Channel channel_;
-    std::string buffer_;
-    FileCallback readCallback_;
+    std::string buffer_;           // 用于write()函数的缓冲区
+    FileCallback readCallback_;    // 参数为read读取到的string，提供给用户进行处理
 };
 
 #endif // FILE_H
